@@ -7,6 +7,7 @@ import {
   PlayCircle,
   Loader2
 } from "lucide-react"
+import API from "../../config/api";
 
 const AdminModules = () => {
 
@@ -28,7 +29,7 @@ const AdminModules = () => {
     try {
       setLoading(true)
 
-      const res = await axios.get("http://localhost:8000/admin/courses")
+      const res = await axios.get("${API}/admin/courses")
 
       setCourses(res.data)
 
@@ -45,7 +46,7 @@ const AdminModules = () => {
       setModuleLoading(true)
 
       const res = await axios.get(
-        `http://localhost:8000/api/modules/course/${courseId}`
+        `${API}/api/modules/course/${courseId}`
       )
 
       setModules(res.data)
@@ -74,7 +75,7 @@ const AdminModules = () => {
     try {
       setAdding(true)
 
-      await axios.post("http://localhost:8000/api/modules/create", {
+      await axios.post("${API}/api/modules/create", {
         courseId: selectedCourse._id,
         title,
         description,
@@ -98,7 +99,7 @@ const AdminModules = () => {
   // ================= DELETE MODULE =================
   const deleteModule = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/modules/${id}`)
+      await axios.delete(`${API}/api/modules/${id}`)
 
       fetchModules(selectedCourse._id)
 

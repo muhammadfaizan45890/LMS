@@ -8,6 +8,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
+import API from "../config/api.js";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
@@ -38,7 +39,7 @@ const Login = () => {
         setIsLoading(true);
         try {
             const res = await axios.post(
-                `http://localhost:8000/user/login`,
+                `${API}/user/login`,
                 formData,
                 { headers: { "Content-Type": "application/json" } }
             );

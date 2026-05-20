@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import API from "../config/api.js";
 
 import {
   BookA,
@@ -67,7 +68,7 @@ const Navbar = () => {
     try {
 
       const res = await axios.post(
-        `http://localhost:8000/user/logout`,
+        `${API}/user/logout`,
         {},
         {
           headers: {

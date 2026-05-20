@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
+import API from "../../config/api";
 
 import {
   BookOpen,
@@ -39,7 +40,7 @@ const AdminCourses = () => {
       setLoading(true)
 
       const res = await axios.get(
-        "http://localhost:8000/admin/courses"
+        "${API}/admin/courses"
       )
 
       setCourses(res.data || [])
@@ -65,7 +66,7 @@ const AdminCourses = () => {
       setCreating(true)
 
       await axios.post(
-        "http://localhost:8000/admin/course",
+        "${API}/admin/course",
         form
       )
 
@@ -102,7 +103,7 @@ const AdminCourses = () => {
       setDeletingId(id)
 
       await axios.delete(
-        `http://localhost:8000/admin/course/${id}`
+        `${API}/admin/course/${id}`
       )
 
       // REMOVE FROM UI

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import YouTube from "react-youtube";
+import API from "../../config/api";
 
 const Video = () => {
   const location = useLocation();

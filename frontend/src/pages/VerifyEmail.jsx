@@ -11,7 +11,7 @@ const VerifyEmail = ({ userEmail }) => {
   const handleResendEmail = async () => {
     try {
       setIsLoading(true);
-      const res = await axios.post('http://localhost:8000/user/resend-verification', {
+      const res = await axios.post('${API}/user/resend-verification', {
         email: userEmail
       });
       if (res.data.success) {

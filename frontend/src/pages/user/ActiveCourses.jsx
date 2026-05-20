@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API from "../../config/api";
 
 import {
   BookOpen,
@@ -38,7 +39,7 @@ const ActiveCourses = () => {
       setLoading(true);
 
       const res = await axios.get(
-        `http://localhost:8000/enroll/my-courses/${userId}`
+        `${API}/enroll/my-courses/${userId}`
       );
 
       const activeCourses = (res.data || []).filter(
@@ -83,10 +84,10 @@ const ActiveCourses = () => {
   const openCourse = async (courseId) => {
     try {
       const [courseRes, moduleRes] = await Promise.all([
-        axios.get(`http://localhost:8000/admin/course/${courseId}`),
+        axios.get(`${API}/admin/course/${courseId}`),
 
         axios.get(
-          `http://localhost:8000/api/modules/course/${courseId}`
+          `${API}/api/modules/course/${courseId}`
         ),
       ]);
 

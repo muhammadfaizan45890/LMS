@@ -7,6 +7,7 @@ import { CheckCircle, Loader2, RotateCcw, RefreshCcw } from 'lucide-react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'sonner';
+import API from "../config/api.js";
 
 const VerifyOTP = () => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -45,7 +46,7 @@ const VerifyOTP = () => {
 
     try {
       setIsLoading(true);
-      const res = await axios.post(`http://localhost:8000/user/verify-otp/${email}`, { otp: finalOtp });
+      const res = await axios.post(`${API}/user/verify-otp/${email}`, { otp: finalOtp });
       setSuccessMessage(res.data.message || "OTP verified successfully!");
       toast.success(res.data.message || "OTP verified!");
       setIsVerified(true);
@@ -61,7 +62,7 @@ const VerifyOTP = () => {
   const handleResend = async () => {
     try {
       setIsResending(true);
-      const res = await axios.post(`http://localhost:8000/user/resend-otp`, { email });
+      const res = await axios.post(`${API}/user/resend-otp`, { email });
       toast.success(res.data.message || "OTP resent successfully!");
       setOtp(["", "", "", "", "", ""]);
       inputRefs.current[0]?.focus();

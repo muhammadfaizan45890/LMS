@@ -9,7 +9,8 @@ import {
   FilePlus2, // ✅ FIXED (was missing)
 } from "lucide-react";
 
-const API = "http://localhost:8000";
+
+const API = "${API}";
 
 const AdminNotes = () => {
   const [courses, setCourses] = useState([]);

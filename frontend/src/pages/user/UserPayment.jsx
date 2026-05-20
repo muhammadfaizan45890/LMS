@@ -10,6 +10,7 @@ import {
   Loader2,
   MessageCircle,
 } from "lucide-react";
+import API from "../../config/api";
 
 const UserPayment = ({ course, userId, onClose }) => {
   const [method, setMethod] = useState("jazzcash");
@@ -40,7 +41,7 @@ const UserPayment = ({ course, userId, onClose }) => {
         paymentMethod: method,
       };
 
-      await axios.post("http://localhost:8000/enroll/enroll", payload);
+      await axios.post("${API}/enroll/enroll", payload);
 
       setSuccess("Payment submitted successfully!");
 

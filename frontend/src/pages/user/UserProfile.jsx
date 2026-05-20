@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../config/api";
 
 import {
   User,
@@ -34,7 +35,7 @@ const UserProfile = () => {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:8000/admin/users"
+        "${API}/admin/users"
       );
 
       const currentUser = res.data.find(
@@ -53,7 +54,7 @@ const UserProfile = () => {
   const fetchEnrollments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/enroll/my-courses/${userId}`
+        `${API}/enroll/my-courses/${userId}`
       );
 
       setEnrollments(res.data || []);

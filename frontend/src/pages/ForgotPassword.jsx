@@ -8,6 +8,7 @@ import { CheckCircle, Loader2 } from 'lucide-react'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
+import API from "../config/api.js";
 
 const ForgotPassword = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -20,7 +21,7 @@ const ForgotPassword = () => {
         e.preventDefault()
         try {
             setIsLoading(true)
-            const res = await axios.post(`http://localhost:8000/user/forgot-password`, {
+            const res = await axios.post(`${API}/user/forgot-password`, {
                 email
             });
 

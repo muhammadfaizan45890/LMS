@@ -33,7 +33,7 @@ const ExploreCourses = () => {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:8000/user/course"
+        "${API}/user/course"
       );
 
       setCourses(res.data || []);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../config/api";
 
 import {
   Wallet,
@@ -33,7 +34,7 @@ const AdminRefund = () => {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:8000/refund/all"
+        "${API}/refund/all"
       );
 
       setRefunds(res.data || []);
@@ -74,7 +75,7 @@ const AdminRefund = () => {
       setUpdatingId(refundId);
 
       await axios.put(
-        `http://localhost:8000/refund/update/${refundId}`,
+        `${API}/refund/update/${refundId}`,
         {
           status,
         }

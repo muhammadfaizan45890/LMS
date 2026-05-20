@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import API from "../../config/api";
 
 const AdminUsers = () => {
 
@@ -20,7 +21,7 @@ const AdminUsers = () => {
       setError(null);
 
       const res = await axios.get(
-        "http://localhost:8000/enroll/all"
+        "${API}/enroll/all"
       );
 
       setEnrollments(res.data || []);
@@ -68,7 +69,7 @@ const AdminUsers = () => {
     try {
 
       await axios.put(
-        `http://localhost:8000/enroll/status/${id}`,
+        `${API}/enroll/status/${id}`,
         { status }
       );
 
@@ -100,7 +101,7 @@ const AdminUsers = () => {
     try {
 
       await axios.delete(
-        `http://localhost:8000/enroll/delete/${id}`
+        `${API}/enroll/delete/${id}`
       );
 
       setEnrollments((prev) =>

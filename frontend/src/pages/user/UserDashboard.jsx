@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react"
 import axios from "axios"
-
+import API from "../../config/api";
 import UserPayment from "./UserPayment"
 
 import {
@@ -36,7 +36,7 @@ const UserDashboard = () => {
       setLoading(true)
 
       const res = await axios.get(
-        "http://localhost:8000/admin/courses"
+        "${API}/admin/courses"
       )
 
       setCourses(res.data || [])
@@ -59,7 +59,7 @@ const UserDashboard = () => {
       if (!userId) return
 
       const res = await axios.get(
-        `http://localhost:8000/enroll/my-courses/${userId}`
+        `${API}/enroll/my-courses/${userId}`
       )
 
       setEnrolledCourses(res.data || [])

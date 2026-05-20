@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../config/api";
 
 import {
   Wallet,
@@ -33,7 +34,7 @@ const RefundRequest = () => {
       setLoading(true);
 
       const res = await axios.get(
-        `http://localhost:8000/enroll/my-courses/${userId}`
+        `${API}/enroll/my-courses/${userId}`
       );
 
       const activeCourses = (res.data || []).filter(
@@ -52,7 +53,7 @@ const RefundRequest = () => {
   const fetchRequests = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/refund/user/${userId}`
+        `${API}/refund/user/${userId}`
       );
 
       setRequests(res.data || []);
@@ -92,7 +93,7 @@ const submitRefund = async (e) => {
   try {
     setSubmitting(true);
 
-    await axios.post("http://localhost:8000/refund/create", {
+    await axios.post("${API}/refund/create", {
       userId,
       courseId: selectedCourse,
       reason,

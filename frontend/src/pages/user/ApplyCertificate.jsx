@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../config/api";
 
 import {
   Award,
@@ -34,7 +35,7 @@ const ApplyCertificate = () => {
       setLoading(true);
 
       const res = await axios.get(
-        `http://localhost:8000/enroll/my-courses/${userId}`
+        `${API}/enroll/my-courses/${userId}`
       );
 
       const completedCourses = (res.data || []).filter(
@@ -53,7 +54,7 @@ const ApplyCertificate = () => {
   const fetchApplications = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/certificate/user/${userId}`
+        `${API}/certificate/user/${userId}`
       );
 
       setApplications(res.data || []);
@@ -82,7 +83,7 @@ const ApplyCertificate = () => {
       setSubmitting(true);
 
       await axios.post(
-        "http://localhost:8000/certificate/apply",
+        "${API}/certificate/apply",
         {
           userId,
           courseId: selectedCourse,

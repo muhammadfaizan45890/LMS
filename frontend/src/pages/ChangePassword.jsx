@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Loader2 } from 'lucide-react'
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import API from "../config/api.js";
 
 const ChangePassword = () => {
     const { email } = useParams()
@@ -31,7 +32,7 @@ const ChangePassword = () => {
         try {
             setIsLoading(true)
             const res = await axios.post(
-                `http://localhost:8000/user/change-password/${email}`,
+                `${API}/user/change-password/${email}`,
                 { newPassword, confirmPassword }
             )
 

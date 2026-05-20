@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../config/api";
 
 import {
   FileText,
@@ -18,7 +19,7 @@ const Notes = () => {
 
   const userId = localStorage.getItem("userId");
 
-  const API = "http://localhost:8000";
+  const API = "${API}";
 
   // ================= FETCH ACTIVE COURSES =================
   useEffect(() => {

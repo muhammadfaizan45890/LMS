@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
+import API from "../../config/api";
 
 const AdminDashboard = () => {
 
@@ -13,7 +14,7 @@ const AdminDashboard = () => {
     try {
       setLoading(true)
 
-      const res = await axios.get("http://localhost:8000/admin/users")
+      const res = await axios.get("${API}/admin/users")
 
       setUsers(res.data)
       setLoading(false)
@@ -42,7 +43,7 @@ const AdminDashboard = () => {
 
       if (!confirmDelete) return
 
-      await axios.delete(`http://localhost:8000/admin/user/${id}`)
+      await axios.delete(`${API}/admin/user/${id}`)
 
       // instant UI update
       setUsers((prev) => prev.filter((u) => u._id !== id))
