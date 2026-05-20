@@ -22,10 +22,15 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 // ================= MIDDLEWARE =================
-app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://lms-murex-tau.vercel.app/"
+    ],
+    credentials: true
+  })
+);
 
 // ✅ IMPORTANT: must come before routes for form-data safety
 app.use(express.json());
